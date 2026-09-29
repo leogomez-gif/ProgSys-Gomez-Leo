@@ -82,7 +82,7 @@ public class MemoryManager {
 		int byteIndex = blockNumber / 8;
 		int bitPosition = blockNumber % 8;
 		int offset = BITMAP_OFFSET + byteIndex;
-		int masque = 1;
+		int masque = 1 << bitPosition;
 
 		if (used) {
 			//Positioner le bit à 1 
@@ -104,10 +104,16 @@ public class MemoryManager {
 
 		// TODO:
 		// Calculer byteIndex.
-		
+		int byteIndex = blockNumber / 8;
 		// Calculer bitPosition.
+		int bitPosition = blockNumber % 8;
+		int masque = 1 <<  bitPosition;
 		// Lire le bit.
-
+        if ((memory[offset] & masque) != 0) {
+			return 1; 
+		} else {
+			return 0; 
+		}
 		return -1;
 	}
 
