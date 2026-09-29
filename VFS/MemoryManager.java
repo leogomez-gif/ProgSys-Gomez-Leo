@@ -102,7 +102,7 @@ public class MemoryManager {
 			return -1;
 		}
 
-		// TODO:
+		
 		// Calculer byteIndex.
 		int byteIndex = blockNumber / 8;
 		// Calculer bitPosition.
@@ -125,7 +125,19 @@ public class MemoryManager {
 		//
 		// Retourner le premier bloc libre.
 		// Le marquer immédiatement comme utilisé.
-
+		int byteIndex = blockNumber / 8;
+		int bitPosition = blockNumber % 8;
+		int offset = BITMAP_OFFSET + byteIndex;
+		int masque = 1 << bitPosition;
+		
+		for (int i = 129; i < NUM_BLOCKS; i++) {
+			
+			if (isBlockUsed == 0) {
+				setBlockUsed(i, true);
+				return i; 
+			}
+		}
+	
 		return -1;
 	}
 }
