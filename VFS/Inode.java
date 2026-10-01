@@ -15,9 +15,10 @@ public class Inode {
     }
 
     public int getInodeOffset() {
-        // TODO:
+       
         // Calculer l'offset exact de l'inode.
-        return 0;
+        int offset = 1024 + (this.inodeNumber * INODE_SIZE);
+        return offset;
     }
 
     public int getFileType() {

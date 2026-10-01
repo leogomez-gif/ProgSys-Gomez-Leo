@@ -119,12 +119,7 @@ public class MemoryManager {
 
 	public int allocateBlock() {
 
-		// TODO:
-		// Parcourir les blocs de données :
-		// 129 .. NUM_BLOCKS - 1.
-		//
-		// Retourner le premier bloc libre.
-		// Le marquer immédiatement comme utilisé.
+		
 		int byteIndex = blockNumber / 8;
 		int bitPosition = blockNumber % 8;
 		int offset = BITMAP_OFFSET + byteIndex;
