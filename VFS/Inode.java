@@ -22,9 +22,19 @@ public class Inode {
     }
 
     public int getFileType() {
-        // TODO:
-        // Lire le type à offset + 4.
-        return 0;
+        
+    byte[] memory = memoryManager.getFilesystemMemory();
+    
+    
+    int baseOffset = getInodeOffset() + 4;
+
+    
+    int type = ((memory[baseOffset] & 0xFF) << 24) |
+               ((memory[baseOffset + 1] & 0xFF) << 16) |
+               ((memory[baseOffset + 2] & 0xFF) << 8) |
+               ((memory[baseOffset + 3] & 0xFF));
+
+    return type;
     }
 
     public int getFileSize() {
