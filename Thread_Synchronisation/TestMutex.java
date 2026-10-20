@@ -1,6 +1,6 @@
 import java.util.Locale;
 
-public class TestCompteur {
+public class TestMutex {
     private static final int NOMBRE_TESTS = 50;
     private static final int NOMBRE_THREADS_PAR_DEFAUT = 9;
     private static final int INCREMENTS_PAR_THREAD_PAR_DEFAUT = 1_111_111;
