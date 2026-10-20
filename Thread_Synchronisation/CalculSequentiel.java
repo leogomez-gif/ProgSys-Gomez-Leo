@@ -15,7 +15,7 @@ public class CalculSequentiel {
 		// liste de thread
 		
 
-        // TODO: Ce code sera remplacé par une version parallèle
+        
         for (int i = 0; i < DONNEES.length; i++) {
             int valeur = DONNEES[i];
 			
