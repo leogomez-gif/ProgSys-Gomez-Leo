@@ -27,4 +27,5 @@ public class CompteurDangereux {
     public static void resetCompteur() {
         compteurGlobal = 0;
     }
+
 }
