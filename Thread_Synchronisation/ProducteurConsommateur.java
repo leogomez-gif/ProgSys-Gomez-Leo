@@ -12,8 +12,15 @@ public class ProducteurConsommateur {
     private final Semaphore mutexBuffer = new Semaphore(1); // quel erreur ici ? vous pouvez le résoudre plus tard
 
     class Producteur implements Runnable {
+
+        private int genererProduit() { 
+            return 42; 
+        }
+
         public void run() {
             for (int i = 0; i < 10; i++) {
+
+                
                 int produit = genererProduit();
 
                 // Attendre une place libre
@@ -28,6 +35,8 @@ public class ProducteurConsommateur {
                     
                     // Ajouter l'élément au buffer
                     buffer.add(produit);
+
+                    System.out.println("Le produit a été ajouté Taille actuelle du buffer : " + buffer.size());
                 
                     // Libérer l'accès au buffer
                 
@@ -47,6 +56,8 @@ public class ProducteurConsommateur {
     class Consommateur implements Runnable {
         public void run() {
             for (int i = 0; i < 7; i++) {
+
+                
                   try {
                     //Attendre qu'un élément soit disponible
 
@@ -57,8 +68,11 @@ public class ProducteurConsommateur {
                     mutexBuffer.acquire();
                     
                     // Ajouter l'élément au buffer
-                    buffer.poll(produit);
-                
+                   
+                    Integer produit = buffer.poll();    
+                    
+                    System.out.println("Un produit a été retiré Taille actuelle du buffer : " + buffer.size());
+                    
                     // Libérer l'accès au buffer
                 
                     mutexBuffer.release();
